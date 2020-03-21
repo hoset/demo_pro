@@ -1,0 +1,38 @@
+server:
+  port: 9999
+  servlet:
+    context-path: /message/
+spring:
+  datasource:
+    druid:
+      url: jdbc:mysql://localhost:3306/message_demo?allowMultiQueries=true&serverTimezone=GMT%2B8&characterEncoding=utf8
+      username: root
+      password: 123456
+      driver-class-name: com.mysql.cj.jdbc.Driver
+  jackson:
+    serialization:
+      write-dates-as-timestamps: true
+  mail:
+    host: smtp.qq.com
+    username: 164991810@qq.com
+    password: xmxgiekmhtrubjjb
+    protocol: smtp
+#    properties.mail.smtp.auth: true
+#    properties.mail.smtp.port: 465 #端口号465或587
+#    properties.mail.display.sendmail: Javen #可以任意
+#    properties.mail.display.sendname: Spring Boot Guide Email #可以任意
+#    properties.mail.smtp.starttls.enable: true
+#    properties.mail.smtp.starttls.required: true
+#    properties.mail.smtp.ssl.enable: true
+    default-encoding: utf-8
+#    from: 164991810@qq.com
+mybatis:
+  type-aliases-package: com.school.message.web.pojo
+  mapper-locations: classpath:com/school/message/web/*/../*mapper/..*Mapper.xml
+  configuration:
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+pagehelper:
+  helper-dialect: mysql
+  reasonable: true
+  support-methods-arguments: true
