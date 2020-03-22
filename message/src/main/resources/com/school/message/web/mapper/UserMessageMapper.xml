@@ -1,0 +1,35 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.school.message.web.mapper.MessageMapper">
+
+
+    <insert id="insert" parameterType="UserMessage" useGeneratedKeys="true" >
+        INSERT INTO`m_user_message` (  `content`, `type`, `timeStamp` )
+        VALUES
+            (  #{content}, #{type}, #{timeStamp} );
+
+    </insert>
+
+    <update id="update" parameterType="UserMessage" >
+        UPDATE `m_user_message`
+        SET `content` = #{content},
+            `type` = #{type},
+            `timeStamp` = #{timeStamp}
+        WHERE
+            `id` = #{id};
+
+    </update>
+
+    <delete id="delete" parameterType="long" >
+        DELETE FROM m_user_message WHERE id = #{id}
+    </delete>
+    <select id="query" resultType="UserMessage">
+
+        SELECT * FROM m_user
+
+    </select>
+
+
+</mapper>

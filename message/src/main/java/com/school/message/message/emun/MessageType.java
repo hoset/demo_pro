@@ -4,7 +4,8 @@ public enum MessageType {
     EMAIL(1),
     WEI_XIN(2),
     SHORT_MESSAGE(3),
-    ALL(4)
+    ALL(4),
+    WEB_PAGE(5)
     ;
     private int type;
 

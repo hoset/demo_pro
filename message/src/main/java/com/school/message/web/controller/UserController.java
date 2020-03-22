@@ -7,8 +7,10 @@ import com.school.message.web.pojo.User;
 import com.school.message.web.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
+@RequestMapping("user")
 public class UserController {
 
     private IUserService userServiceIml;
@@ -18,22 +20,23 @@ public class UserController {
         this.userServiceIml = userServiceIml;
     }
 
-    public Result insert(User user){
-      return  userServiceIml.insert(user);
+    @RequestMapping("insert")
+    public Result insert(User user) {
+        return userServiceIml.insert(user);
     }
 
-    public Result update(User user){
+    @RequestMapping("update")
+    public Result update(User user) {
         return userServiceIml.update(user);
     }
 
-    public Result delete(long id){
-
+    @RequestMapping("delete")
+    public Result delete(long id) {
         return userServiceIml.delete(id);
     }
 
-    public PageInfo<User> query(BaseParam param){
-
-
+    @RequestMapping("query")
+    public PageInfo<User> query(BaseParam param) {
         return userServiceIml.query(param);
     }
 
