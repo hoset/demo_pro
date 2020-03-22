@@ -6,10 +6,11 @@ import com.school.message.web.pojo.Result;
 import com.school.message.web.pojo.User;
 import com.school.message.web.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+@RestController
 @RequestMapping("user")
 public class UserController {
 
@@ -21,12 +22,12 @@ public class UserController {
     }
 
     @RequestMapping("insert")
-    public Result insert(User user) {
+    public Result insert(@RequestBody User user) {
         return userServiceIml.insert(user);
     }
 
     @RequestMapping("update")
-    public Result update(User user) {
+    public Result update(@RequestBody User user) {
         return userServiceIml.update(user);
     }
 

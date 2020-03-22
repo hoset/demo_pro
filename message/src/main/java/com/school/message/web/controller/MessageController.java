@@ -6,10 +6,11 @@ import com.school.message.web.pojo.Result;
 import com.school.message.web.pojo.UserMessage;
 import com.school.message.web.service.IMessageService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+@RestController
 @RequestMapping("message")
 public class MessageController {
 
@@ -21,13 +22,13 @@ public class MessageController {
     }
 
     @RequestMapping("insert")
-    public Result insert(UserMessage userMessage) {
+    public Result insert(@RequestBody UserMessage userMessage) {
 
         return messageServiceImpl.insert(userMessage);
     }
 
     @RequestMapping("update")
-    public Result update(UserMessage userMessage) {
+    public Result update(@RequestBody UserMessage userMessage) {
         return messageServiceImpl.update(userMessage);
     }
 

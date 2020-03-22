@@ -11,10 +11,9 @@ public class User {
 
 
     private String photoPath; // 头像地址
-    private LocalDate birthday; // 生日
+    private String birthday; // 生日
     private String nickname; // 昵称
     private String desc; // 签名
-    private Integer position; // 职位
 
     private String mobilePhone; // 手机
     private String weixin;//微信
@@ -66,11 +65,11 @@ public class User {
         this.photoPath = photoPath;
     }
 
-    public LocalDate getBirthday() {
+    public String getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(LocalDate birthday) {
+    public void setBirthday(String birthday) {
         this.birthday = birthday;
     }
 
@@ -88,14 +87,6 @@ public class User {
 
     public void setDesc(String desc) {
         this.desc = desc;
-    }
-
-    public Integer getPosition() {
-        return position;
-    }
-
-    public void setPosition(Integer position) {
-        this.position = position;
     }
 
     public String getMobilePhone() {
@@ -130,10 +121,9 @@ public class User {
                 ", password='" + password + '\'' +
                 ", role=" + role +
                 ", photoPath='" + photoPath + '\'' +
-                ", birthday=" + birthday +
+                ", birthday='" + birthday + '\'' +
                 ", nickname='" + nickname + '\'' +
                 ", desc='" + desc + '\'' +
-                ", position=" + position +
                 ", mobilePhone='" + mobilePhone + '\'' +
                 ", weixin='" + weixin + '\'' +
                 ", email='" + email + '\'' +

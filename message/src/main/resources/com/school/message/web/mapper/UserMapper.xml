@@ -6,9 +6,9 @@
 
 
     <insert id="insert" parameterType="User" useGeneratedKeys="true" >
-        INSERT INTO `m_user` (  `username`, `role`, `photoPath`, `birthday`, `nickname`, `desc`, `position`, `mobilePhone`, `weixin`, `email` )
+        INSERT INTO `m_user` (  `username`, `role`, `photoPath`, `birthday`, `nickname`, `desc`,  `mobilePhone`, `weixin`, `email` )
         VALUES
-            ( #{username}, #{role}, #{photoPath}, #{birthday}, #{nickname}, #{desc}, #{position}, #{mobilePhone}, #{weixin}, #{email} );
+            ( #{username}, #{role}, #{photoPath}, #{birthday}, #{nickname}, #{desc},  #{mobilePhone}, #{weixin}, #{email} );
 
 
 
@@ -23,7 +23,7 @@
             `birthday` = #{birthday},
             `nickname` = #{nickname},
             `desc` = #{desc},
-            `position` = #{position},
+
             `mobilePhone` = #{mobilePhone},
             `weixin` = #{weixin},
             `email` = #{email}
