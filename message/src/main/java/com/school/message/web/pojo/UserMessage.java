@@ -1,12 +1,15 @@
 package com.school.message.web.pojo;
 
+import java.time.LocalDateTime;
+import java.util.Date;
+
 public class UserMessage {
 
     private Long id; // id
     private String content;// 内容
     private Integer type; // 类型
 
-    private Long timeStamp; // 时间戳
+    private Long timeStamp = new Date().getTime(); // 时间戳
 
 
     public UserMessage() {
