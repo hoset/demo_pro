@@ -1,20 +1,31 @@
 package com.school.message.web.pojo;
 
 public class MessageCount {
-    private Integer total; // 总数
+
+    private Long id; // id
+    private  String content; // 内容
     private Integer type; // 类型
-    private Integer countRead; // 已读
-    private Integer countUnRead; // 未读
+    private Integer state; //状态
+    private Integer total; // 总数
+
 
     public MessageCount() {
     }
 
-    public Integer getTotal() {
-        return total;
+    public Long getId() {
+        return id;
     }
 
-    public void setTotal(Integer total) {
-        this.total = total;
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
     }
 
     public Integer getType() {
@@ -25,29 +36,30 @@ public class MessageCount {
         this.type = type;
     }
 
-    public Integer getCountRead() {
-        return countRead;
+    public Integer getState() {
+        return state;
     }
 
-    public void setCountRead(Integer countRead) {
-        this.countRead = countRead;
+    public void setState(Integer state) {
+        this.state = state;
     }
 
-    public Integer getCountUnRead() {
-        return countUnRead;
+    public Integer getTotal() {
+        return total;
     }
 
-    public void setCountUnRead(Integer countUnRead) {
-        this.countUnRead = countUnRead;
+    public void setTotal(Integer total) {
+        this.total = total;
     }
 
     @Override
     public String toString() {
         return "MessageCount{" +
-                "total=" + total +
+                "id=" + id +
+                ", content='" + content + '\'' +
                 ", type=" + type +
-                ", countRead=" + countRead +
-                ", countUnRead=" + countUnRead +
+                ", state=" + state +
+                ", total=" + total +
                 '}';
     }
 }
