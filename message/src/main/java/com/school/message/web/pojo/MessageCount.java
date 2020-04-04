@@ -7,6 +7,8 @@ public class MessageCount {
     private Integer type; // 类型
     private Integer state; //状态
     private Integer total; // 总数
+    private String from;
+    private String to;
 
 
     public MessageCount() {
@@ -52,6 +54,22 @@ public class MessageCount {
         this.total = total;
     }
 
+    public String getFrom() {
+        return from;
+    }
+
+    public void setFrom(String from) {
+        this.from = from;
+    }
+
+    public String getTo() {
+        return to;
+    }
+
+    public void setTo(String to) {
+        this.to = to;
+    }
+
     @Override
     public String toString() {
         return "MessageCount{" +
@@ -60,6 +78,8 @@ public class MessageCount {
                 ", type=" + type +
                 ", state=" + state +
                 ", total=" + total +
+                ", from='" + from + '\'' +
+                ", to='" + to + '\'' +
                 '}';
     }
 }

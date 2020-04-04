@@ -14,8 +14,8 @@ spring:
       write-dates-as-timestamps: true
   mail:
     host: smtp.qq.com
-    username: 164991810@qq.com
-    password: xmxgiekmhtrubjjb
+    username:
+    password:
     protocol: smtp
 #    properties.mail.smtp.auth: true
 #    properties.mail.smtp.port: 465 #端口号465或587

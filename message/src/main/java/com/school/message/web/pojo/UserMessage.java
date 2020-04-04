@@ -1,6 +1,5 @@
 package com.school.message.web.pojo;
 
-import java.time.LocalDateTime;
 import java.util.Date;
 
 public class UserMessage {
@@ -13,6 +12,12 @@ public class UserMessage {
 
 
     public UserMessage() {
+    }
+
+    public UserMessage(String content, Integer type, Long timeStamp) {
+        this.content = content;
+        this.type = type;
+        this.timeStamp = timeStamp;
     }
 
     public Long getId() {

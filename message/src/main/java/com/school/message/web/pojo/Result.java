@@ -3,6 +3,7 @@ package com.school.message.web.pojo;
 public class Result {
     private int code;
     private String message;
+    private Object data;
 
     public Result() {
     }
@@ -28,11 +29,20 @@ public class Result {
         this.message = message;
     }
 
+    public Object getData() {
+        return data;
+    }
+
+    public void setData(Object data) {
+        this.data = data;
+    }
+
     @Override
     public String toString() {
-        return "ResponseBean{" +
+        return "Result{" +
                 "code=" + code +
                 ", message='" + message + '\'' +
+                ", data=" + data +
                 '}';
     }
 }

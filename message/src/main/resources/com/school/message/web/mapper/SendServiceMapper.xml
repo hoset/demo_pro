@@ -1,0 +1,53 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.school.message.web.mapper.SendServiceMapper">
+
+
+
+    <select id="getUser" resultType="SendUser">
+
+        SELECT
+            `id`,`username`,  `photoPath`,`mobilePhone`, `weixin`, `email`,`desc`
+
+        FROM m_user
+
+    </select>
+
+    <select id="getMessage" resultType="MessageInfo">
+
+        SELECT
+            `from`,
+            `to`,
+            `state`,
+            `messageId`,
+            `timeStamp` ,
+            `type`,
+            `content`
+        FROM
+            m_user_message AS m
+                INNER JOIN (
+                SELECT
+                    `messageId`,
+                    `from`,
+                    `to`,
+                    `state`
+
+                FROM
+                    user_message
+                WHERE
+                    ( `from` = #{from} AND `to` = #{to} )
+                   OR ( `from` = #{to} AND `to` = #{from} )
+            ) AS u ON m.id = u.`messageId`
+
+    </select>
+
+    <insert id="send" >
+        <foreach collection="to" item="item" index="index" separator=";"  >
+        INSERT INTO `user_message`(`messageId`, `from`, `state`, `to`) VALUES (#{messageId}, #{from}, 0, #{item});
+
+        </foreach>
+
+    </insert>
+</mapper>

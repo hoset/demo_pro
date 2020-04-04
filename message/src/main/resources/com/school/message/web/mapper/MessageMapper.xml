@@ -27,7 +27,7 @@
     </delete>
     <select id="query" resultType="UserMessage">
 
-        SELECT * FROM m_user
+        SELECT * FROM m_user_message
 
     </select>
 

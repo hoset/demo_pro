@@ -1,7 +1,5 @@
 package com.school.message.web.pojo;
 
-import java.time.LocalDate;
-
 public class User {
     private Long id;
 
