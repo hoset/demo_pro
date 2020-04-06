@@ -14,7 +14,6 @@ public class User {
     private String desc; // 签名
 
     private String mobilePhone; // 手机
-    private String weixin;//微信
     private String email; // 邮箱
 
 
@@ -95,13 +94,7 @@ public class User {
         this.mobilePhone = mobilePhone;
     }
 
-    public String getWeixin() {
-        return weixin;
-    }
 
-    public void setWeixin(String weixin) {
-        this.weixin = weixin;
-    }
 
     public String getEmail() {
         return email;
@@ -123,7 +116,6 @@ public class User {
                 ", nickname='" + nickname + '\'' +
                 ", desc='" + desc + '\'' +
                 ", mobilePhone='" + mobilePhone + '\'' +
-                ", weixin='" + weixin + '\'' +
                 ", email='" + email + '\'' +
                 '}';
     }

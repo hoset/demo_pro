@@ -11,15 +11,40 @@
 
     </insert>
 
-    <select id="login" parameterType="RegisterOrLogin" resultType="User">
+    <select id="login" parameterType="RegisterOrLogin" resultType="UserInfo">
 
-        SELECT *
-        FROM m_user
-        WHERE `username` = #{username}
-          AND `password` = #{password}
+        SELECT
+            id,
+            u.username,
+            u.role,
+            u.photoPath,
+            u.birthday,
+            u.nickname,
+            u.`desc`,
+            e.username AS email
+        FROM
+            m_user AS u
+                LEFT JOIN m_user_email AS e ON u.id = e.user_id
+        WHERE
+            u.`username` = #{username}
+          AND u.`password` = #{password}
 
 
     </select>
+
+    <insert id="update" parameterType="UserEmailInfo">
+        INSERT INTO `m_user_email`(`username`, `password`, `host`, `protocol`, `user_id`)
+        VALUES (#{username}, #{password}, #{host}, #{protocol}, #{userId})
+          ON DUPLICATE KEY UPDATE
+            `username` = VALUES(`username`),
+            `password` = VALUES(`password`),
+            `host` = VALUES(`host`),
+            `protocol` = VALUES(`protocol`)
+
+
+
+
+    </insert>
 
 
 </mapper>

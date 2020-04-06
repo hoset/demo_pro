@@ -11,7 +11,7 @@ import java.util.List;
 
 public abstract class BaseServiceImpl<T> implements IBaseService<T> {
 
-    private BaseMapper<T> baseMapper;
+    BaseMapper<T> baseMapper;
 
     public BaseServiceImpl(BaseMapper<T> baseMapper) {
         this.baseMapper = baseMapper;

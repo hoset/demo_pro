@@ -1,9 +1,8 @@
 package com.school.message.web.service.impl;
 
 import com.school.message.web.mapper.RegisterOrLoginMapper;
-import com.school.message.web.pojo.RegisterOrLogin;
-import com.school.message.web.pojo.Result;
-import com.school.message.web.pojo.User;
+import com.school.message.web.mapper.UserMapper;
+import com.school.message.web.pojo.*;
 import com.school.message.web.service.IRegisterOrLoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,9 +14,11 @@ public class RegisterOrLoginServiceImpl implements IRegisterOrLoginService {
 
     private RegisterOrLoginMapper registerOrLoginMapper;
     private HttpServletRequest httpServletRequest;
+    private UserMapper userMapper;
 
     @Autowired
-    public RegisterOrLoginServiceImpl(RegisterOrLoginMapper registerOrLoginMapper,HttpServletRequest httpServletRequest) {
+    public RegisterOrLoginServiceImpl(UserMapper userMapper,RegisterOrLoginMapper registerOrLoginMapper,HttpServletRequest httpServletRequest) {
+        this.userMapper = userMapper;
         this.registerOrLoginMapper = registerOrLoginMapper;
         this.httpServletRequest =httpServletRequest;
     }
@@ -29,6 +30,8 @@ public class RegisterOrLoginServiceImpl implements IRegisterOrLoginService {
 
         if (register1 != 1) {
             result = new Result(500, "注册失败");
+        }else{
+            result =  this.login(register);
         }
 
         return result;
@@ -36,17 +39,34 @@ public class RegisterOrLoginServiceImpl implements IRegisterOrLoginService {
 
     @Override
     public Result login(RegisterOrLogin login) {
-        User login1 = registerOrLoginMapper.login(login);
+        UserInfo info = registerOrLoginMapper.login(login);
 
         Result result = new Result(0, "登录成功");
-        if (login1 == null) {
+        if (info == null) {
             result = new Result(500, "登录失败");
         } else {
-            result.setData(login1);
-            httpServletRequest.getSession().setAttribute("ttt", login1);
+            result.setData(info);
+            httpServletRequest.getSession().setAttribute("ttt", info);
         }
 
         return result;
 
+    }
+
+    @Override
+    public Result update(UpdateUserInfo userInfo) {
+       int updateEmail =  registerOrLoginMapper.update(userInfo.getEmailInfo());
+
+        User user = userInfo.toUser();
+
+        int updateUser = userMapper.update(user);
+
+        Result result = new Result(0, "成功");
+
+        if (updateUser != 1) {
+            result = new Result(500, "失败");
+        }
+
+        return result;
     }
 }

@@ -5,39 +5,61 @@
 <mapper namespace="com.school.message.web.mapper.UserMapper">
 
 
-    <insert id="insert" parameterType="User" useGeneratedKeys="true" >
-        INSERT INTO `m_user` (  `username`, `role`, `photoPath`, `birthday`, `nickname`, `desc`,  `mobilePhone`, `weixin`, `email` , `password`)
-        VALUES
-            ( #{username}, #{role}, #{photoPath}, #{birthday}, #{nickname}, #{desc},  #{mobilePhone}, #{weixin}, #{email} ,#{ password});
-
+    <insert id="insert" parameterType="User" useGeneratedKeys="true">
+        INSERT INTO `m_user` (`username`, `role`, `photoPath`, `birthday`, `nickname`, `desc`, `password`)
+        VALUES (#{username}, #{role}, #{photoPath}, #{birthday}, #{nickname}, #{desc}, #{ password});
 
 
     </insert>
 
-    <update id="update" parameterType="User" >
+    <update id="update" parameterType="User">
 
         UPDATE `m_user`
         SET
-            `password` = #{password},
-            `role` = #{role},
-            `photoPath` = #{photoPath},
-            `birthday` = #{birthday},
-            `nickname` = #{nickname},
-            `desc` = #{desc},
+        <trim suffixOverrides=",">
+            <if test="password != null">
+                `password` = #{password},
+            </if>
+            <if test="role != null">
+                `role` = #{role},
+            </if>
+            <if test="photoPath != null">
+                `photoPath` = #{photoPath},
+            </if>
+            <if test="birthday != null">
+                `birthday` = #{birthday},
 
-            `mobilePhone` = #{mobilePhone},
-            `weixin` = #{weixin},
-            `email` = #{email}
+            </if>
+            <if test="nickname != null">
+                `nickname` = #{nickname},
+            </if>
+            <if test="desc != null">
+                `desc` = #{desc},
+
+            </if>
+        </trim>
         WHERE
-            `id` = #{id};
+        `id` = #{id};
     </update>
 
-    <delete id="delete" parameterType="long" >
-        DELETE FROM m_user WHERE id = #{id}
+    <delete id="delete" parameterType="long">
+        DELETE
+        FROM m_user
+        WHERE id = #{id}
     </delete>
     <select id="query" resultType="User">
 
-        SELECT * FROM m_user
+        SELECT id,
+               u.username,
+               u.password,
+               u.role,
+               u.photoPath,
+               u.birthday,
+               u.nickname,
+               u.`desc`,
+               e.username AS email
+        FROM m_user AS u
+                 LEFT JOIN m_user_email AS e ON u.id = e.user_id
 
     </select>
 

@@ -3,6 +3,7 @@ package com.school.message.web.controller;
 import com.github.pagehelper.PageInfo;
 import com.school.message.web.param.BaseParam;
 import com.school.message.web.pojo.Result;
+import com.school.message.web.pojo.UpdateUserInfo;
 import com.school.message.web.pojo.User;
 import com.school.message.web.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +26,7 @@ public class UserController {
     }
 
     @PostMapping("update")
-    public Result update(@RequestBody User user) {
+    public Result update(@RequestBody UpdateUserInfo user) {
         return userServiceIml.update(user);
     }
 
