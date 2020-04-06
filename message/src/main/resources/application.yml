@@ -12,11 +12,11 @@ spring:
   jackson:
     serialization:
       write-dates-as-timestamps: true
-  mail:
-    host: smtp.qq.com
-    username:
-    password:
-    protocol: smtp
+#  mail:
+#    host: smtp.qq.com
+#    username: 164991810@qq.com
+#    password: xmxgiekmhtrubjjb
+#    protocol: smtp
 #    properties.mail.smtp.auth: true
 #    properties.mail.smtp.port: 465 #端口号465或587
 #    properties.mail.display.sendmail: Javen #可以任意
@@ -24,7 +24,7 @@ spring:
 #    properties.mail.smtp.starttls.enable: true
 #    properties.mail.smtp.starttls.required: true
 #    properties.mail.smtp.ssl.enable: true
-    default-encoding: utf-8
+#    default-encoding: utf-8
 #    from: 164991810@qq.com
 mybatis:
   type-aliases-package: com.school.message.web.pojo

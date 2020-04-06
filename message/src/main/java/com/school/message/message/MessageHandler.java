@@ -1,5 +1,6 @@
 package com.school.message.message;
 
+import com.school.message.message.message.Message;
 import org.springframework.stereotype.Component;
 
 @Component
