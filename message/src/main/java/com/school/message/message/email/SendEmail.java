@@ -11,6 +11,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
 
 import javax.mail.MessagingException;
+import javax.mail.Session;
 import javax.mail.internet.MimeMessage;
 import java.util.Date;
 import java.util.Properties;
@@ -26,14 +27,11 @@ public class SendEmail implements ISendMessage {
         EMailMessage mesg = (EMailMessage)message;
         try {
 
-
-
-
-
             JavaMailSenderImpl javaMailSenderImpl = new JavaMailSenderImpl();
 
             MimeMessage mimeMessage = createMessage(javaMailSenderImpl,mesg);
             javaMailSenderImpl.send(mimeMessage);
+
         } catch (MessagingException e) {
             e.printStackTrace();
         }

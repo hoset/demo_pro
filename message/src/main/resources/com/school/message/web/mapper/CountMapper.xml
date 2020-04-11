@@ -8,26 +8,21 @@
 
     <select id="query" resultType="MessageCount">
         SELECT
-            id,
-            content,
+
             type,
-            `timeStamp`,
-            state,
+            `state`,
             count( * ) total
         FROM
             (
                 SELECT
-                    id,
-                    content,
+
                     type,
-                    `timeStamp`,
-                    IFNULL( state,- 1 ) state
+                    IFNULL( state, - 1 ) `state`
                 FROM
                     m_user_message AS m
                         LEFT JOIN user_message AS u ON m.id = u.messageId
             ) AS t
         GROUP BY
-            id,
             type,
             state
 

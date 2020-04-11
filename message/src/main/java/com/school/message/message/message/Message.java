@@ -8,6 +8,7 @@ public class Message {
     private String subject;
     private String content;
 
+
     public Message() {
     }
 

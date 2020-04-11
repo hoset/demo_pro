@@ -5,49 +5,54 @@
 <mapper namespace="com.school.message.web.mapper.SendServiceMapper">
 
 
-
     <select id="getUser" resultType="SendUser">
 
-        SELECT
-            `id`,`username`,  `photoPath`,`mobilePhone`, `weixin`, `email`,`desc`
+        SELECT id,
+               u.username,
 
-        FROM m_user
+               u.role,
+               u.photoPath,
+               u.nickname,
+               u.`desc`,
+               e.username AS email
+        FROM m_user AS u
+                 LEFT JOIN m_user_email AS e ON u.id = e.user_id
 
     </select>
 
     <select id="getMessage" resultType="MessageInfo">
 
-        SELECT
-            `from`,
-            `to`,
-            `state`,
-            `messageId`,
-            `timeStamp` ,
-            `type`,
-            `content`
-        FROM
-            m_user_message AS m
-                INNER JOIN (
-                SELECT
-                    `messageId`,
-                    `from`,
-                    `to`,
-                    `state`
+        SELECT `from`,
+               `to`,
+               `state`,
+               `messageId`,
+               `timeStamp`,
+               `type`,
+               `content`
+        FROM m_user_message AS m
+                 INNER JOIN (
+            SELECT `messageId`,
+                   `from`,
+                   `to`,
+                   `state`
 
-                FROM
-                    user_message
-                WHERE
-                    ( `from` = #{from} AND `to` = #{to} )
-                   OR ( `from` = #{to} AND `to` = #{from} )
-            ) AS u ON m.id = u.`messageId`
+            FROM user_message
+            WHERE (`from` = #{from} AND `to` = #{to})
+               OR (`from` = #{to} AND `to` = #{from})
+        ) AS u ON m.id = u.`messageId`
+        ORDER BY `timeStamp`
 
     </select>
 
-    <insert id="send" >
-        <foreach collection="to" item="item" index="index" separator=";"  >
-        INSERT INTO `user_message`(`messageId`, `from`, `state`, `to`) VALUES (#{messageId}, #{from}, 0, #{item});
-
+    <insert id="send">
+        <foreach collection="to" item="item" index="index" separator=";">
+            INSERT INTO `user_message`(`messageId`, `from`, `state`, `to`) VALUES (#{messageId}, #{from}, 0, #{item});
         </foreach>
 
     </insert>
+    <select id="email" resultType="EmailInfo" >
+
+        SELECT * FROM m_user_email;
+
+    </select>
 </mapper>

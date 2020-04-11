@@ -7,13 +7,13 @@ public enum MessageType {
     ALL(4),
     WEB_PAGE(5)
     ;
-    private int type;
+    private Integer type;
 
-    MessageType(int type) {
+    MessageType(Integer type) {
         this.type = type;
     }
 
-    public int value(){
+    public Integer value(){
         return type;
     }
 }

@@ -14,10 +14,9 @@ public class UserMessage {
     public UserMessage() {
     }
 
-    public UserMessage(String content, Integer type, Long timeStamp) {
+    public UserMessage(String content, Integer type) {
         this.content = content;
         this.type = type;
-        this.timeStamp = timeStamp;
     }
 
     public Long getId() {

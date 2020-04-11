@@ -5,7 +5,7 @@
 <mapper namespace="com.school.message.web.mapper.MessageMapper">
 
 
-    <insert id="insert" parameterType="UserMessage" useGeneratedKeys="true" >
+    <insert id="insert" parameterType="UserMessage" useGeneratedKeys="true"  keyProperty="id" keyColumn="id"  >
         INSERT INTO`m_user_message` (  `content`, `type`, `timeStamp` )
         VALUES
             (  #{content}, #{type}, #{timeStamp} );

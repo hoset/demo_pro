@@ -2,6 +2,7 @@ package com.school.message.web.pojo;
 
 public class SendUser {
     private Long id;
+    private Integer role;
 
     private String username;
     private String photoPath; // 头像地址
@@ -18,6 +19,14 @@ public class SendUser {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Integer getRole() {
+        return role;
+    }
+
+    public void setRole(Integer role) {
+        this.role = role;
     }
 
     public String getUsername() {
@@ -72,6 +81,7 @@ public class SendUser {
     public String toString() {
         return "SendUser{" +
                 "id=" + id +
+                ", role=" + role +
                 ", username='" + username + '\'' +
                 ", photoPath='" + photoPath + '\'' +
                 ", desc='" + desc + '\'' +

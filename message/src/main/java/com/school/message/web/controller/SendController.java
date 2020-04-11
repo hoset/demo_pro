@@ -2,15 +2,9 @@ package com.school.message.web.controller;
 
 import com.school.message.web.pojo.Result;
 import com.school.message.web.pojo.SendMessage;
-import com.school.message.web.pojo.SendUser;
 import com.school.message.web.service.ISendService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("send")
@@ -33,9 +27,10 @@ public class SendController {
         return sendServiceImpl.getMessage(from,to);
     }
     @PostMapping("send")
-    public Result sendMessage(SendMessage message){
+    public Result sendMessage(@RequestBody SendMessage message){
         return sendServiceImpl.sendMessage(message);
     }
+
 
 
 }

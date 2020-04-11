@@ -7,12 +7,13 @@ import org.springframework.stereotype.Component;
 public class MessageHandler {
     private ISendMessage[] sendMessage;
 
-    public void init(ISendMessage... sendMessage) {
+    public MessageHandler init(ISendMessage... sendMessage) {
         if (sendMessage == null) {
             this.sendMessage = new ISendMessage[0];
         } else {
             this.sendMessage = sendMessage;
         }
+        return this;
     }
 
     public void send(Message msg) {
